@@ -1,6 +1,5 @@
 import React from 'react';
 import { Volume2, VolumeX, Sparkles } from 'lucide-react';
-import { audioEngine } from '../services/audioEngine';
 
 interface TopNavProps {
   activeTab: 'telemetry' | 'guidance' | 'analytics' | 'calibration' | 'taxonomy';

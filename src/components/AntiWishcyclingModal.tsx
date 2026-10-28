@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, ShieldAlert, AlertTriangle, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { X, ShieldAlert, AlertTriangle, CheckCircle2 } from 'lucide-react';
 import { WasteItem } from '../types/waste';
 import { STREAM_BINS } from '../data/wasteCatalog';
 import { BinTooltip } from './BinTooltip';

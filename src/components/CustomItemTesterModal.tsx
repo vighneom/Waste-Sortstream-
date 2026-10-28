@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Sparkles, Sliders, CheckCircle2, ShieldAlert, Cpu } from 'lucide-react';
+import { X, Sparkles, CheckCircle2, ShieldAlert, Cpu } from 'lucide-react';
 import { WasteItem, StreamBinId } from '../types/waste';
 import { STREAM_BINS } from '../data/wasteCatalog';
 import { audioEngine } from '../services/audioEngine';

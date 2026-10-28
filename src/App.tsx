@@ -362,10 +362,7 @@ export default function App() {
       />
 
       {/* Clean Industrial Footer conforming to Anti-Slop Discipline */}
-      <footer 
-        className="mt-auto border-t border-slate-900 bg-slate-950 px-6 text-xs text-slate-500 flex items-center"
-        style={{ height: '45px' }}
-      >
+      <footer className="mt-auto border-t border-slate-900 bg-slate-950 px-6 py-3 min-h-[45px] text-xs text-slate-500 flex items-center">
         <div className="max-w-7xl w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
             <span className="font-semibold text-slate-400">SortIQ PureStream OS</span>

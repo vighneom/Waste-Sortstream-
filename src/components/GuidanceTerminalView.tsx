@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, AlertTriangle, ArrowRight, Scan, ShieldAlert, Sparkles, ChevronRight, Recycle, HelpCircle } from 'lucide-react';
+import { CheckCircle2, AlertTriangle, ShieldAlert, Sparkles, ChevronRight, Recycle, HelpCircle, Loader2 } from 'lucide-react';
 import { WasteItem } from '../types/waste';
 import { STREAM_BINS, PRELOADED_WASTE_ITEMS } from '../data/wasteCatalog';
 import { audioEngine } from '../services/audioEngine';
@@ -67,13 +67,17 @@ export const GuidanceTerminalView: React.FC<GuidanceTerminalViewProps> = ({
             <button
               key={item.id}
               onClick={() => handleSimulateScan(item)}
-              className={`px-3 py-1.5 text-xs rounded-lg font-medium border transition-all ${
+              disabled={isScanning}
+              className={`px-3 py-1.5 text-xs rounded-lg font-medium border transition-all flex items-center gap-1.5 ${
                 activeItem.id === item.id
                   ? 'bg-cyan-500/20 border-cyan-400 text-cyan-200 shadow-sm'
                   : 'bg-slate-950 border-slate-800 text-slate-400 hover:text-slate-200 hover:border-slate-700'
-              }`}
+              } ${isScanning ? 'opacity-60 cursor-not-allowed' : ''}`}
             >
-              {item.name.split(' ')[0]} {item.name.split(' ')[1] || ''}
+              {isScanning && activeItem.id === item.id && (
+                <Loader2 className="w-3 h-3 animate-spin text-cyan-400" />
+              )}
+              <span>{item.name.split(' ')[0]} {item.name.split(' ')[1] || ''}</span>
             </button>
           ))}
         </div>

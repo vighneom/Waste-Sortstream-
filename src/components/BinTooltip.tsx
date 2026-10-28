@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, Info, Sparkles, Recycle, ArrowRight } from 'lucide-react';
+import { HelpCircle } from 'lucide-react';
 import { StreamBinConfig, StreamBinId } from '../types/waste';
 import { STREAM_BINS } from '../data/wasteCatalog';
 

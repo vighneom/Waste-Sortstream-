@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Camera, Radio, Scale, ShieldAlert, Cpu, Terminal, ArrowDownRight, RefreshCw } from 'lucide-react';
+import { Camera, Radio, Scale, ShieldAlert, Cpu, Terminal } from 'lucide-react';
 import { WasteItem, LatencyBreakdown, ActuatorCommandLog } from '../types/waste';
 import { STREAM_BINS, PRELOADED_WASTE_ITEMS } from '../data/wasteCatalog';
 import { NIRSpectrogram } from './NIRSpectrogram';
@@ -37,7 +37,7 @@ export const IndustrialConveyorView: React.FC<IndustrialConveyorViewProps> = ({
   onOpenWishcyclingInfo
 }) => {
   const [showJsonPayload, setShowJsonPayload] = useState(false);
-  const [isTableExpanded, setIsTableExpanded] = useState(false);
+  const [isTableExpanded, setIsTableExpanded] = useState(true);
 
   // Ingestion status based on conveyor position
   // 0% - 25%: Entering / Infeed
@@ -334,17 +334,7 @@ export const IndustrialConveyorView: React.FC<IndustrialConveyorViewProps> = ({
       />
 
       {/* Recent Actuation Event Log Table */}
-      <div 
-        className="bg-slate-900/90 border border-slate-800 rounded-xl px-5 transition-all"
-        style={{
-          width: '1219px',
-          maxWidth: '100%',
-          height: isTableExpanded ? 'auto' : '44px',
-          overflow: 'hidden',
-          paddingTop: isTableExpanded ? '1.25rem' : '0.625rem',
-          paddingBottom: isTableExpanded ? '1.25rem' : '0.625rem'
-        }}
-      >
+      <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 transition-all w-full">
         <div 
           className="flex items-center justify-between cursor-pointer select-none"
           onClick={() => setIsTableExpanded(!isTableExpanded)}
@@ -368,7 +358,7 @@ export const IndustrialConveyorView: React.FC<IndustrialConveyorViewProps> = ({
               type="button"
               className="text-xs font-mono text-cyan-400 hover:text-cyan-300 px-2 py-0.5 rounded bg-slate-950 border border-slate-800 cursor-pointer"
             >
-              {isTableExpanded ? 'Collapse' : 'Expand (44px)'}
+              {isTableExpanded ? 'Collapse' : 'Expand'}
             </button>
           </div>
         </div>
@@ -388,16 +378,8 @@ export const IndustrialConveyorView: React.FC<IndustrialConveyorViewProps> = ({
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-800/60">
-                {recentLogs.map((log, index) => {
+                {recentLogs.map((log) => {
                   const bin = STREAM_BINS[log.destinationBin];
-                  // Heights matching CSS 1, CSS 8, CSS 9, CSS 10, CSS 11, CSS 12
-                  const badgeHeight = 
-                    index === 0 ? '41.3125px' :
-                    index === 1 ? '49.3125px' :
-                    index === 2 ? '42.3125px' :
-                    index === 3 ? '43px' :
-                    index === 4 ? '43px' :
-                    index === 5 ? '43px' : undefined;
 
                   return (
                     <tr key={log.id} className="hover:bg-slate-850/50 transition-colors">
@@ -420,12 +402,11 @@ export const IndustrialConveyorView: React.FC<IndustrialConveyorViewProps> = ({
                       <td className="py-2 px-3">
                         <BinTooltip binId={log.destinationBin} align="left" showIcon={false}>
                           <span 
-                            className="px-2 py-0.5 rounded text-[11px] font-bold border transition-colors inline-flex items-center" 
+                            className="px-2.5 py-1 rounded text-[11px] font-bold border transition-colors inline-flex items-center" 
                             style={{
                               backgroundColor: bin?.bgLightHex || '#1e293b',
                               color: bin?.textColorHex || '#f8fafc',
-                              borderColor: bin?.borderColorHex || 'transparent',
-                              height: badgeHeight
+                              borderColor: bin?.borderColorHex || 'transparent'
                             }}
                           >
                             {bin?.shortCode || log.destinationBin}

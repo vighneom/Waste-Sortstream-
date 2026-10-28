@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldAlert, CheckCircle2, XCircle, AlertTriangle, FileText, Sparkles } from 'lucide-react';
+import { ShieldAlert, CheckCircle2, XCircle } from 'lucide-react';
 import { ANTI_WISHCYCLING_STANDARDS } from '../data/wasteCatalog';
 
 export const WishcyclingStandardsView: React.FC = () => {

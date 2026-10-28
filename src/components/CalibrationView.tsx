@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Sliders, CheckCircle2, RefreshCw, Radio, Camera, Cpu, Gauge, AlertCircle } from 'lucide-react';
+import { CheckCircle2, RefreshCw, Radio, Camera, Gauge } from 'lucide-react';
 import { audioEngine } from '../services/audioEngine';
 
 export const CalibrationView: React.FC = () => {
@@ -18,6 +18,8 @@ export const CalibrationView: React.FC = () => {
 
   const handleRunCalibrationCycle = () => {
     setIsCalibrating(true);
+    setDarkScanDone(false);
+    setWhiteTileDone(false);
     audioEngine.playSensorChirp();
     setTimeout(() => {
       audioEngine.playPneumaticBlast();
@@ -75,9 +77,9 @@ export const CalibrationView: React.FC = () => {
                 <span className="text-slate-300 font-medium block">Dark Current Drift Scan</span>
                 <span className="text-[11px] text-slate-500 font-mono">Zero-photon photodiode bias</span>
               </div>
-              <span className="flex items-center gap-1 text-emerald-400 font-mono font-bold">
+              <span className={`flex items-center gap-1 font-mono font-bold ${darkScanDone ? 'text-emerald-400' : 'text-amber-400'}`}>
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                PASSED
+                {darkScanDone ? 'PASSED' : 'CALIBRATING'}
               </span>
             </div>
 
@@ -86,9 +88,9 @@ export const CalibrationView: React.FC = () => {
                 <span className="text-slate-300 font-medium block">White Ceramic Baseline Tile</span>
                 <span className="text-[11px] text-slate-500 font-mono">99.9% Spectral reflectance</span>
               </div>
-              <span className="flex items-center gap-1 text-emerald-400 font-mono font-bold">
+              <span className={`flex items-center gap-1 font-mono font-bold ${whiteTileDone ? 'text-emerald-400' : 'text-amber-400'}`}>
                 <CheckCircle2 className="w-3.5 h-3.5" />
-                CALIBRATED
+                {whiteTileDone ? 'CALIBRATED' : 'CALIBRATING'}
               </span>
             </div>
 
