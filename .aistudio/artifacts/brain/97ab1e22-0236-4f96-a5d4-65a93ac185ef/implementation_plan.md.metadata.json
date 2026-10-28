@@ -1,0 +1,6 @@
+{
+  "summary":  "Comprehensive implementation plan for SortIQ PureStream OS & Web Portal, an industrial-grade and source-segregation waste sorting sensor ecosystem. Outlines the dual-interface architecture (Industrial MRF Telemetry and Guidance Terminal), real-time NIR/RGB/load-cell sensor simulator with sub-50ms actuator triggering, anti-wishcycling interception rules, downstream circularity lifecycle roadmaps, and hardware calibration diagnostics.",
+  "updatedAt":  "2026-10-28T09:07:47.089989269Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}

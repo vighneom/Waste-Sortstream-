@@ -1,0 +1,6 @@
+{
+  "name": "SortIQ PureStream OS",
+  "description": "High-velocity sensor ecosystem and source-segregation portal with real-time NIR spectroscopy, sub-50ms pneumatic actuator triggering, and zero-tolerance anti-wishcycling guidance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
